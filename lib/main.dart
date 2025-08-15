@@ -1,15 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:go_router/go_router.dart';
+import 'package:myapp/ai_page.dart';
 
 void main() {
   runApp(const MyApp());
 }
 
+final _router = GoRouter(
+  routes: [
+    GoRoute(
+      path: '/',
+      builder: (context, state) => const LandingPage(),
+    ),
+     GoRoute(path: '/ai', builder: (context, state) => AiPage()),
+  ],
+);
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       title: 'ChatGPT Destroyer',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -20,7 +31,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
       ),
-      home: const LandingPage(),
+      routerConfig: _router,
     );
   }
 }
@@ -52,7 +63,14 @@ class _LandingPageState extends State<LandingPage> {
             // Main content section - Customize this section
             Text( // You can replace this Text widget with your desired content for the landing page.
  'Welcome to ChatGPT Destroyer',
-              style: Theme.of(context).textTheme.headlineLarge,
+              style: Theme.of(context).textTheme.headlineLarge!.copyWith(color: Colors.white, fontWeight: FontWeight.bold,  fontSize: 36),
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                context.go('/ai');
+              },
+              child: const Text('Test for free'),
             ),
             const SizedBox(height: 20),
             // Add more content here
