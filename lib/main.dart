@@ -36,21 +36,19 @@ class _LandingPageState extends State<LandingPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF0000EE), // Electric blue
+        backgroundColor: const Color(0xFF0000EE),
         title: Text(
           'ChatGPT Destroyer',
           style: Theme.of(context).textTheme.headlineMedium!.copyWith(color: Colors.white),
         ),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
+ body: Padding(
+        padding: const EdgeInsets.all(20.0),
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            const SizedBox(height: 50), // Add some spacing below the app bar
+
             // Main content section - Customize this section
             Text( // You can replace this Text widget with your desired content for the landing page.
  'Welcome to ChatGPT Destroyer',
